@@ -1,7 +1,7 @@
 export default function WelcomePage() {
     return (
         <page className="flex justify-center p-20 ">
-        <div className="w-80 bg-black p-4 rounded-3xl h-12pro ">
+        <div className="w-80 bg-black p-4 rounded-3xl h-12pro sm:h-auto ">
             <div className="flex place-content-end text-sm">
             <button className="">Skip</button>
             </div>
