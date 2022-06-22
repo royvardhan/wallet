@@ -23,6 +23,12 @@ module.exports = {
   
         'sm': {'max': '400px'},
         // => @media (max-width: 639px) { ... }
+      },
+      backgroundImage: {
+        '3': 'url("./img/12.jpg")',
+        'wallet': 'url("./img/wallet.png")',
+        'import': 'url("./img/import.png")',
+
       }
     },
   },
