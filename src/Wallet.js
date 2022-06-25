@@ -7,7 +7,7 @@ export default function Wallet() {
             <p>Your wallets</p>
             <button>Ethereum</button>
             </div>
-            <container className="text-sm flex flex-col mt-10 bg-green-700 p-3 place-content-center rounded-xl border-solid ">
+            <container className="text-sm m-2 flex flex-col mt-10  bg-green-500 p-3 place-content-center rounded-xl border-solid ">
 
                 <detailscontainer className="flex text-xs justify-between ">
                 <p>0x3248402...</p>
