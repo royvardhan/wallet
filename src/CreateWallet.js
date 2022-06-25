@@ -11,7 +11,7 @@ export default function WelcomePage() {
             <p className="w-64 mb-5 mt-2">Import your wallet using seed phrase or set up a new one </p>
             <container className="text-sm flex mt-20">
                 <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2">
-                    <h2 >Import your wallet</h2>
+                    <h2 className="" >Import your wallet</h2>
                 </box1>
                 <box2 className=" ml-4 p-10 rounded-xl bg-import bg-cover border-solid border-stone-600 border-2">
                     <h2 >Set up a new wallet</h2>
