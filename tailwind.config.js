@@ -29,7 +29,10 @@ module.exports = {
         'wallet': 'url("./img/wallet.png")',
         'import': 'url("./img/import.png")',
 
-      }
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'] 
+      },
     },
   },
   plugins: [],
