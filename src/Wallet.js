@@ -10,12 +10,29 @@ export default function Wallet() {
     const [mnemonic, setMnemonic] = useState(null);
     const [privateKey, setPrivateKey] = useState(null);
 
-    function createWallet() {
-        const wallet = ethers.Wallet.createRandom();
-        setWallet(wallet.address);
-        setPrivateKey(wallet.privateKey);
-        setMnemonic(wallet.mnemonic);
+    async function createWallet() {
+        const wallet = await ethers.Wallet.createRandom();
+        await setWallet(wallet.address);
+        await setPrivateKey(wallet.privateKey);
+        await setMnemonic(wallet.mnemonic);
+    }
 
+    const etherscanApi = "https://api.etherscan.io/api?module=account&action=balance&address=";
+    const wallet = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+    const tags = "&tag=latest&apikey="
+    const apiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
+    const etherscan = etherscanApi + wallet + tags + apiKey;
+
+
+    async function fetchBalance() {
+        await createWallet();
+        await fetch(etherscan)
+        .then(res => res.json())
+        .then(data => { console.log(ethers.utils.formatEther(data.result))})
+        // const provider = await ethers.getDefaultProvider()
+        // const balance = await provider.getBalance(walletAddress);
+        // const balanceInEth = await ethers.utils.formatEther(balance)
+        // console.log(`balance: ${balanceInEth} ETH`)
     }
 
 
@@ -47,7 +64,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex justify-between pl-2 pr-2 mt-1">    
-                <button className="ml-1">Send</button>
+                <button onClick={fetchBalance} className="ml-1">Send</button>
                 <button>Receive</button>
                 </detailscontainer>
             </container>
