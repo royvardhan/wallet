@@ -33,6 +33,10 @@ module.exports = {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'] 
       },
+      colors: {
+        'green' : '#30955C',
+        'highlight' : '#BDDDCB',
+      },
     },
   },
   plugins: [],
