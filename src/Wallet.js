@@ -1,8 +1,24 @@
 
 import { GrSend} from "react-icons/gr";
 import { GiReceiveMoney } from "react-icons/gi";
+import { ethers } from "ethers"
+import { useState } from "react";
 
 export default function Wallet() {
+    
+    const [walletAddress, setWallet] = useState(null);
+    const [mnemonic, setMnemonic] = useState(null);
+    const [privateKey, setPrivateKey] = useState(null);
+
+    function createWallet() {
+        const wallet = ethers.Wallet.createRandom();
+        setWallet(wallet.address);
+        setPrivateKey(wallet.privateKey);
+        setMnemonic(wallet.mnemonic);
+
+    }
+
+
     return (
         <page className="flex justify-center m-20 sm:p-2 sm:m-2 text-black  ">
         <div 
