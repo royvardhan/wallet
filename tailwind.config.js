@@ -37,6 +37,9 @@ module.exports = {
         'green' : '#30955C',
         'highlight' : '#BDDDCB',
       },
+      fontSize: {
+        'small': '14px',
+      },
     },
   },
   plugins: [],

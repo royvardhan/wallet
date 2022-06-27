@@ -38,27 +38,48 @@ export default function Wallet() {
 
             <detailscontainer className=" flex text-green text-xs justify-between m-2 mt-5 mr-12">
             <button className="bg-highlight rounded-xl px-2 py-1">Tokens</button>
-            <button className="bg-highlight rounded-xl px-2 py-1">Positions</button>
-            <button className="bg-highlight rounded-xl px-2 py-1">NFTs</button>
+            <button>Positions</button>
+            <button>NFTs</button>
             </detailscontainer>
+
+            <tokendetails>
+            <detailscontainer className="flex text-sm justify-between mt-7">
+            <p>ETH</p>
+            <p>1200.09 USD</p>
+            </detailscontainer>
+            <detailscontainer className="flex text-gray-500 text-small justify-between">
+            <p>Ethereum</p>
+            <p>77.32 USD(1.96%)</p>
+            </detailscontainer>
+            </tokendetails>
+
+            <tokendetails>
+            <detailscontainer className="flex text-sm justify-between mt-3">
+            <p>ETH</p>
+            <p>1200.09 USD</p>
+            </detailscontainer>
+            <detailscontainer className="flex text-gray-500 text-small justify-between">
+            <p>Ethereum</p>
+            <p>77.32 USD(1.96%)</p>
+            </detailscontainer>
+            </tokendetails>
+
+            <tokendetails>
+            <detailscontainer className="flex text-sm justify-between mt-3">
+            <p>ETH</p>
+            <p>1200.09 USD</p>
+            </detailscontainer>
+            <detailscontainer className="flex text-gray-500 text-small justify-between">
+            <p>Ethereum</p>
+            <p>77.32 USD(1.96%)</p>
+            </detailscontainer>
+            </tokendetails>
+
+            
+
+
+
         </div>
         </page>
     )
 }
-
-{/* <balance className="flex justify-between bg-yellow-300">
-                    <p>4,383.94</p>
-                    <p>USD</p>
-                </balance> */}
-
-                // <detailscontainer className="flex justify-between pl-2 pr-2 mt-5">
-                    
-                // <button>
-                // <GiReceiveMoney className="flex justify-center w-10 mb-2" />
-                // Send
-                // </button>
-                // <button>
-                // <GiReceiveMoney className="flex justify-center w-10 mb-2" />
-                //     Receive
-                //     </button>
-                // </detailscontainer>
