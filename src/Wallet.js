@@ -2,38 +2,43 @@
 import { GrSend} from "react-icons/gr";
 import { GiReceiveMoney } from "react-icons/gi";
 import { ethers } from "ethers"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Wallet() {
     
-    const [walletAddress, setWallet] = useState(null);
+    
     const [mnemonic, setMnemonic] = useState(null);
     const [privateKey, setPrivateKey] = useState(null);
-
-    async function createWallet() {
-        const wallet = await ethers.Wallet.createRandom();
-        await setWallet(wallet.address);
-        await setPrivateKey(wallet.privateKey);
-        await setMnemonic(wallet.mnemonic);
-    }
-
+    const [walletAddress, setWallet] = useState(function checkWallet() {
+        if (!mnemonic) {const wallet = ethers.Wallet.createRandom();
+            setPrivateKey(wallet.privateKey);
+            setMnemonic(wallet.mnemonic);
+            return wallet.address}
+    });
+    const [balance, setBalance] = useState(0);
     // const etherscanApi = "https://api.etherscan.io/api?module=account&action=balance&address=";
-    const wallet = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+    const wallet = walletAddress
     // const tags = "&tag=latest&apikey="
     const apiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
     const etherscan = `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${apiKey}`
 
 
-    async function fetchBalance() {
-        await createWallet();
+
+    async function getBalance() {
         await fetch(etherscan)
         .then(res => res.json())
-        .then(data => { console.log(ethers.utils.formatEther(data.result))})
+        .then(data => { 
+            })
+
+    }
+
+   
+        
+        
         // const provider = await ethers.getDefaultProvider()
         // const balance = await provider.getBalance(walletAddress);
         // const balanceInEth = await ethers.utils.formatEther(balance)
         // console.log(`balance: ${balanceInEth} ETH`)
-    }
 
 
     return (
@@ -52,7 +57,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex text-xl justify-between mt-7">
-                <p>6493</p>
+                <p>${balance}</p>
                 <button>USD</button>
                 </detailscontainer>
 
@@ -64,7 +69,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex justify-between pl-2 pr-2 mt-1">    
-                <button onClick={fetchBalance} className="ml-1">Send</button>
+                <button onClick={getBalance} className="ml-1">Send</button>
                 <button>Receive</button>
                 </detailscontainer>
             </container>
