@@ -17,11 +17,11 @@ export default function Wallet() {
         await setMnemonic(wallet.mnemonic);
     }
 
-    const etherscanApi = "https://api.etherscan.io/api?module=account&action=balance&address=";
+    // const etherscanApi = "https://api.etherscan.io/api?module=account&action=balance&address=";
     const wallet = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
-    const tags = "&tag=latest&apikey="
+    // const tags = "&tag=latest&apikey="
     const apiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
-    const etherscan = etherscanApi + wallet + tags + apiKey;
+    const etherscan = `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${apiKey}`
 
 
     async function fetchBalance() {
