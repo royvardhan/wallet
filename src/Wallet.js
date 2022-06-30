@@ -16,29 +16,33 @@ export default function Wallet() {
             return wallet.address}
     });
     const [balance, setBalance] = useState(0);
-    // const etherscanApi = "https://api.etherscan.io/api?module=account&action=balance&address=";
-    const wallet = walletAddress
-    // const tags = "&tag=latest&apikey="
+
+
+
+    const wallet = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
     const apiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
-    const etherscan = `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${apiKey}`
+    const etherscanBalance = `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${apiKey}`
 
 
-
-    async function getBalance() {
-        await fetch(etherscan)
-        .then(res => res.json())
-        .then(data => { 
-            })
-
-    }
 
    
+        async function getEthPrice () {
+            const response = await fetch(`https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${apiKey}`)
+            const data = await response.json()
+            const fixedDecimal = (data.result.ethusd * 1).toFixed(2)
+            return fixedDecimal
+        }
         
+        async function getBalance () {
+        const provider = await ethers.getDefaultProvider()
+        const balance = await provider.getBalance(wallet);
+        const balanceInEth = await ethers.utils.formatEther(balance)
+        const ethUsd = await getEthPrice()
+        const balanceInUsd = (balanceInEth * ethUsd).toFixed(2)
+        setBalance(balanceInUsd)
+        return balanceInUsd
+        }
         
-        // const provider = await ethers.getDefaultProvider()
-        // const balance = await provider.getBalance(walletAddress);
-        // const balanceInEth = await ethers.utils.formatEther(balance)
-        // console.log(`balance: ${balanceInEth} ETH`)
 
 
     return (
@@ -57,7 +61,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex text-xl justify-between mt-7">
-                <p>${balance}</p>
+                <p>{balance}</p>
                 <button>USD</button>
                 </detailscontainer>
 
@@ -70,7 +74,7 @@ export default function Wallet() {
 
                 <detailscontainer className="flex justify-between pl-2 pr-2 mt-1">    
                 <button onClick={getBalance} className="ml-1">Send</button>
-                <button>Receive</button>
+                <button >Receive</button>
                 </detailscontainer>
             </container>
 
@@ -82,34 +86,34 @@ export default function Wallet() {
 
             <tokendetails>
             <detailscontainer className="flex text-sm justify-between mt-7">
-            <p>ETH</p>
-            <p>1200.09 USD</p>
+            <p>BTC</p>
+            <p>20868 USD</p>
             </detailscontainer>
             <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Ethereum</p>
-            <p>77.32 USD(1.96%)</p>
+            <p>Bitcoin</p>
+            <p>34 USD(-1.90%)</p>
             </detailscontainer>
             </tokendetails>
 
             <tokendetails>
             <detailscontainer className="flex text-sm justify-between mt-3">
             <p>ETH</p>
-            <p>1200.09 USD</p>
+            <p>1202.09 USD</p>
             </detailscontainer>
             <detailscontainer className="flex text-gray-500 text-small justify-between">
             <p>Ethereum</p>
-            <p>77.32 USD(1.96%)</p>
+            <p>399.32 USD(1.96%)</p>
             </detailscontainer>
             </tokendetails>
 
             <tokendetails>
             <detailscontainer className="flex text-sm justify-between mt-3">
-            <p>ETH</p>
-            <p>1200.09 USD</p>
+            <p>BNB</p>
+            <p>237.9 USD</p>
             </detailscontainer>
             <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Ethereum</p>
-            <p>77.32 USD(1.96%)</p>
+            <p>Binane</p>
+            <p>4.7 USD(2%)</p>
             </detailscontainer>
             </tokendetails>
 

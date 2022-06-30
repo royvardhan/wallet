@@ -1,7 +1,7 @@
 
 export default function WelcomePage() {
     return (
-        <page className="flex justify-center m-20 sm:p-2 sm:m-2 ">
+        <page className=" text-white flex justify-center m-20 sm:p-2 sm:m-2 ">
         <div 
         className="w-80 p-4 bg-3 bg-cover rounded-3xl h-12pro sm:w-screen" >
             <div className="flex place-content-end text-sm">
