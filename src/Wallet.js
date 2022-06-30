@@ -20,14 +20,15 @@ export default function Wallet() {
 
 
     const wallet = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
-    const apiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
-    const etherscanBalance = `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${apiKey}`
+    const shortWallet = wallet.substring(0, 6) + "..." + wallet.substring(wallet.length - 4, wallet.length);
+    const etherscanApiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
+   
 
 
 
    
         async function getEthPrice () {
-            const response = await fetch(`https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${apiKey}`)
+            const response = await fetch(`https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${etherscanApiKey}`);
             const data = await response.json()
             const fixedDecimal = (data.result.ethusd * 1).toFixed(2)
             return fixedDecimal
@@ -40,7 +41,6 @@ export default function Wallet() {
         const ethUsd = await getEthPrice()
         const balanceInUsd = (balanceInEth * ethUsd).toFixed(2)
         setBalance(balanceInUsd)
-        return balanceInUsd
         }
         
 
@@ -56,12 +56,12 @@ export default function Wallet() {
             <container className="text-sm m-2 flex flex-col mt-10  bg-green p-4 place-content-center rounded-xl border-solid">
 
                 <detailscontainer className="flex text-xs justify-between">
-                <p>0x3248402...</p>
+                <p>{shortWallet}</p>
                 <button>....</button>
                 </detailscontainer>
 
                 <detailscontainer className="flex text-xl justify-between mt-7">
-                <p>{balance}</p>
+                <p onLoad={getBalance()}>{balance}</p>
                 <button>USD</button>
                 </detailscontainer>
 
