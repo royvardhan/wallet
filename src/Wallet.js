@@ -23,9 +23,6 @@ export default function Wallet() {
     const shortWallet = wallet.substring(0, 6) + "..." + wallet.substring(wallet.length - 4, wallet.length);
     const etherscanApiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
    
-
-
-
    
         async function getEthPrice () {
             const response = await fetch(`https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${etherscanApiKey}`);
@@ -112,7 +109,7 @@ export default function Wallet() {
             <p>237.9 USD</p>
             </detailscontainer>
             <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Binane</p>
+            <p>Binance</p>
             <p>4.7 USD(2%)</p>
             </detailscontainer>
             </tokendetails>

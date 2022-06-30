@@ -6,6 +6,6 @@ import Wallet from './Wallet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  //<App />
-   <Wallet />
+  // <App />
+  <Wallet />
 );
