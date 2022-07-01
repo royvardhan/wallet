@@ -3,6 +3,7 @@ import { GrSend} from "react-icons/gr";
 import { GiReceiveMoney } from "react-icons/gi";
 import { ethers } from "ethers"
 import { useState, useEffect } from "react";
+import { getAssets } from '@depay/web3-assets'
 
 export default function Wallet() {
     
@@ -16,6 +17,7 @@ export default function Wallet() {
             return wallet.address}
     });
     const [balance, setBalance] = useState(0);
+    const [walletAssets, setAssets] = useState([]);
 
 
 
@@ -39,7 +41,12 @@ export default function Wallet() {
         const balanceInUsd = (balanceInEth * ethUsd).toFixed(2)
         setBalance(balanceInUsd)
         }
-        
+
+        useEffect(() => {
+        let assets = getAssets({accounts:{ethereum: wallet}})
+        setAssets(assets)
+        }, [wallet])
+
 
 
     return (
@@ -60,6 +67,7 @@ export default function Wallet() {
                 <detailscontainer className="flex text-xl justify-between mt-7">
                 <p onLoad={getBalance()}>{balance}</p>
                 <button>USD</button>
+                
                 </detailscontainer>
 
                 <hr className="mt-2 mb-2"/>
@@ -70,7 +78,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex justify-between pl-2 pr-2 mt-1">    
-                <button onClick={getBalance} className="ml-1">Send</button>
+                <button onClick={getAssets()} className="ml-1">Send</button>
                 <button >Receive</button>
                 </detailscontainer>
             </container>
