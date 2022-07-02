@@ -63,15 +63,18 @@ export default function Wallet() {
                 <p>399.32 USD(1.96%)</p>
                 </detailscontainer>
                 </tokendetails>
+            
             }
             )
         }
 
         function formatBalanceWithFixed(balance, decimals) {
-            if (balance >= 1) {
-                return balance.substring(0, balance.length - decimals)
-            }
+                const greaterThanOne =  ethers.utils.formatUnits(balance, decimals)
+                return greaterThanOne
+                
         }
+
+        
 
 
 
