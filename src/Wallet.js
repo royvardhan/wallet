@@ -42,10 +42,39 @@ export default function Wallet() {
         setBalance(balanceInUsd)
         }
 
-        useEffect(() => {
-        let assets = getAssets({accounts:{ethereum: wallet}})
+        useEffect( () => {
+        async function getWalletAssets() {
+        let assets = await getAssets({accounts:{ethereum: wallet}})
         setAssets(assets)
+        console.log(assets[0])
+    } getWalletAssets()
         }, [wallet])
+
+
+        function ListAssets() {
+            return walletAssets.map(asset => {
+                return <tokendetails>
+                <detailscontainer className="flex text-sm justify-between mt-3">
+                <p>{asset.symbol}</p>
+                <p> {formatBalanceWithFixed(asset.balance)} USD</p>
+                </detailscontainer>
+                <detailscontainer className="flex text-gray-500 text-small justify-between">
+                <p>{asset.name}</p>
+                <p>399.32 USD(1.96%)</p>
+                </detailscontainer>
+                </tokendetails>
+            }
+            )
+        }
+
+        function formatBalance(balance) {
+            return ethers.utils.formatEther(balance)
+        }
+
+        function formatBalanceWithFixed(balance) {
+            const res = formatBalance(balance)
+            return res.substring(0, res.length - 15)
+        }
 
 
 
@@ -78,7 +107,7 @@ export default function Wallet() {
                 </detailscontainer>
 
                 <detailscontainer className="flex justify-between pl-2 pr-2 mt-1">    
-                <button onClick={getAssets()} className="ml-1">Send</button>
+                <button className="ml-1">Send</button>
                 <button >Receive</button>
                 </detailscontainer>
             </container>
@@ -121,6 +150,8 @@ export default function Wallet() {
             <p>4.7 USD(2%)</p>
             </detailscontainer>
             </tokendetails>
+
+            <ListAssets />
 
             
 
