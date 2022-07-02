@@ -69,8 +69,9 @@ export default function Wallet() {
         }
 
         function formatBalanceWithFixed(balance, decimals) {
-                const greaterThanOne =  ethers.utils.formatUnits(balance, decimals)
-                return greaterThanOne
+                const formatBalance =  ethers.utils.formatUnits(balance, decimals)
+                const shortBalance = Math.round(formatBalance * 100) / 100
+                return shortBalance
                 
         }
 
