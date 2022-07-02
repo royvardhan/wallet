@@ -56,7 +56,7 @@ export default function Wallet() {
                 return <tokendetails>
                 <detailscontainer className="flex text-sm justify-between mt-3">
                 <p>{asset.symbol}</p>
-                <p> {formatBalanceWithFixed(asset.balance)} USD</p>
+                <p> {formatBalanceWithFixed(asset.balance, asset.decimals)}</p>
                 </detailscontainer>
                 <detailscontainer className="flex text-gray-500 text-small justify-between">
                 <p>{asset.name}</p>
@@ -67,13 +67,10 @@ export default function Wallet() {
             )
         }
 
-        function formatBalance(balance) {
-            return ethers.utils.formatEther(balance)
-        }
-
-        function formatBalanceWithFixed(balance) {
-            const res = formatBalance(balance)
-            return res.substring(0, res.length - 15)
+        function formatBalanceWithFixed(balance, decimals) {
+            if (balance >= 1) {
+                return balance.substring(0, balance.length - decimals)
+            }
         }
 
 
