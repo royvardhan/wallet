@@ -5,6 +5,7 @@ import { ethers } from "ethers"
 import { useState, useEffect } from "react";
 import { getAssets } from '@depay/web3-assets'
 
+
 export default function Wallet() {
     
     
@@ -113,46 +114,19 @@ export default function Wallet() {
                 </detailscontainer>
             </container>
 
+            
             <detailscontainer className=" flex text-green text-xs justify-between m-2 mt-5 mr-12">
             <button className="bg-highlight rounded-xl px-2 py-1">Tokens</button>
             <button>Positions</button>
             <button>NFTs</button>
             </detailscontainer>
-
-            <tokendetails>
-            <detailscontainer className="flex text-sm justify-between mt-7">
-            <p>BTC</p>
-            <p>20868 USD</p>
-            </detailscontainer>
-            <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Bitcoin</p>
-            <p>34 USD(-1.90%)</p>
-            </detailscontainer>
-            </tokendetails>
-
-            <tokendetails>
-            <detailscontainer className="flex text-sm justify-between mt-3">
-            <p>ETH</p>
-            <p>1202.09 USD</p>
-            </detailscontainer>
-            <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Ethereum</p>
-            <p>399.32 USD(1.96%)</p>
-            </detailscontainer>
-            </tokendetails>
-
-            <tokendetails>
-            <detailscontainer className="flex text-sm justify-between mt-3">
-            <p>BNB</p>
-            <p>237.9 USD</p>
-            </detailscontainer>
-            <detailscontainer className="flex text-gray-500 text-small justify-between">
-            <p>Binance</p>
-            <p>4.7 USD(2%)</p>
-            </detailscontainer>
-            </tokendetails>
-
-            <ListAssets />
+            
+            
+            <ListAssets/>
+            
+            
+           
+          
 
             
 
