@@ -122,16 +122,15 @@ export default function Wallet() {
             </detailscontainer>
             
             
+            <assetslist className="overflow-scroll max-h-48">
             <ListAssets/>
-            
-            
-           
-          
+            </assetslist>
 
             
-
-
-
+            
+            
+            
+            
         </div>
         </page>
     )
