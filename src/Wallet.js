@@ -86,7 +86,7 @@ export default function Wallet() {
         className="w-80 p-4 bg-white rounded-3xl h-12pro sm:w-screen border-solid border-stone-600 border-2" >
             <div className="flex text-sm mt-5 justify-between">
             <p>Your wallets</p>
-            <button>Ethereum</button>
+            <button>Test</button>
             </div>
             <container className="text-sm m-2 flex flex-col mt-10  bg-green p-4 place-content-center rounded-xl border-solid">
 
