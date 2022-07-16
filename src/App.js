@@ -8,7 +8,7 @@ function App() {
 
   const [page, setPage] = useState(true);
   const [wallet, setWallet] = useState(null);
-  const [privateKey, setPrivateKey] = useState(null);
+  const [privateKey, setPrivateKey] = useState("");
   const handleChange = (event) => {setPrivateKey(prev => event.target.value)}
 
   console.log(privateKey)
@@ -45,7 +45,7 @@ function App() {
             </div>
             <container className="text-sm flex justify-center mt-5"> 
             <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2 flex flex-col">
-              <input className='text-center' type="text" placeholder="Insert Private Key" onChange={handleChange}></input>
+              <input className='text-center' type="text"  placeholder="Insert Private Key" onChange={handleChange}></input>
               <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1">Import</button>
             </box1>
             </container>
