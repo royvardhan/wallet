@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Wallet from './Wallet';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <App />
-  <Wallet />
+  <App />
+  
 );

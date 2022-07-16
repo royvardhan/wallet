@@ -55,7 +55,7 @@ export default function Wallet() {
         function ListAssets() {
             return walletAssets.map(asset => {
                 return <tokendetails>
-                <detailscontainer className="flex text-sm justify-between mt-3">
+                <detailscontainer className="flex text-sm justify-between mt-3 ">
                 <p>{asset.symbol}</p>
                 <p> {formatBalanceWithFixed(asset.balance, asset.decimals)}</p>
                 </detailscontainer>
@@ -123,7 +123,7 @@ export default function Wallet() {
             
             
             <div className="overflow-scroll max-h-48">
-            <ListAssets/>
+            <ListAssets />
             </div>
 
             
