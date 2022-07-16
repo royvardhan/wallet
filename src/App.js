@@ -8,10 +8,14 @@ function App() {
 
   const [page, setPage] = useState(true);
   const [wallet, setWallet] = useState(null);
+  const [privateKey, setPrivateKey] = useState(null);
+  const handleChange = (event) => {setPrivateKey(prev => event.target.value)}
+
+  console.log(privateKey)
 
 
   function walletImport() {
-    setPage(false);
+    setPage(!page);
   }
 
  function IntroPage() {
@@ -34,14 +38,20 @@ function App() {
                 </box2>
             </container>
             </div> }
-            {!page && <div className='text-center'>
-            <h1 className="text-3xl mt-20">Import your wallet</h1>
-            <p className="w-64 mb-5 mt-2">Import your wallet using seed phrase</p>
-            <container className="text-sm flex mt-20"> 
-            <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2">
-              <input type="text" placeholder="Put your private keys here"></input>
+            {!page && <div>
+            <div className='text-center'> 
+            <h1 className="text-3xl mt-20 ">Import your wallet</h1>
+            <p className="w-64 mb-5 mt-2 ">Import your wallet using seed phrase</p>
+            </div>
+            <container className="text-sm flex justify-center mt-5"> 
+            <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2 flex flex-col">
+              <input className='text-center' type="text" placeholder="Insert Private Key" onChange={handleChange}></input>
+              <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1">Import</button>
             </box1>
             </container>
+            <div className='flex justify-center mt-10 text  '> 
+            <button onClick={walletImport} className='text-center px-2 py-1 text-xs bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl '>Go Back</button>
+            </div>
             </div>
              }
         </div>
