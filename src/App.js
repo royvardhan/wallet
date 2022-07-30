@@ -9,18 +9,30 @@ function App() {
   const [page, setPage] = useState(true);
   const [wallet, setWallet] = useState(null);
   const [privateKey, setPrivateKey] = useState(null);
-  let privKey
-  const handleChange = (event) => {
-    privKey = event.target.value;
+
+
+  // const handleChange = (event) => {
+  //   event.preventDefault();
+  //   setPrivateKey(event.target.value);
+  // }
+
+  let key 
+
+  function handleChange(event) {
+    event.preventDefault();
+    key = event.target.value;
   }
 
-  const handleSubmit = () => {
-    console.log(privKey);
-    setPrivateKey(privKey)
+  function handleClick() {
+    setPrivateKey(key);
   }
 
+  let introPage = true;
 
-  console.log(privateKey)
+  function switchPage() {
+    introPage = false;
+  }
+
 
 
   function walletImport() {
@@ -32,7 +44,8 @@ function App() {
     <page className=" text-white flex justify-center m-20 sm:p-2 sm:m-2 ">
         <div 
         className="w-80 p-4 bg-3 bg-cover rounded-3xl h-12pro sm:w-screen" >
-            <div className="flex place-content-end text-sm">
+            <div className="flex justify-between text-sm">
+            <button className="mt-5" onClick={switchPage()} >Watch Only</button>
             <button className="mt-5">Skip</button>
             </div>
             {page && <div>
@@ -54,8 +67,8 @@ function App() {
             </div>
             <container className="text-sm flex justify-center mt-5"> 
             <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2 flex flex-col">
-              <input className='text-center text-black' type="text" onChange={handleChange()}></input>
-              <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1" onClick={handleSubmit()}>Import</button>
+              <input className='text-center text-black' type="text" onChange={handleChange()} placeholder="seed phrase"></input>
+              <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1" onClick={handleClick()}>Import</button>
             </box1>
             </container>
             <div className='flex justify-center mt-10 text  '> 
@@ -73,9 +86,8 @@ function App() {
 
   return (
     <div>
-      <IntroPage />
-    {/* {page && <IntroPage />}
-    {!page && <Wallet walletImport={walletImport} />} */}
+      {introPage && <IntroPage />}
+      {!introPage && <Wallet/>}
     </div>
   );
 }
