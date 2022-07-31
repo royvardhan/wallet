@@ -11,16 +11,20 @@ function App() {
   const [privateKey, setPrivateKey] = useState(null);
 
 
+
   function walletImport() {
     setIntroPage(!intropage);
   }
 
   function handleClick(){
     setPrivateKey(document.getElementById("privateKey").value);
+    const wallet = new Wallet(privateKey);
+    setWallet(wallet.address);
     setIntroPage(!intropage);
-    console.log(privateKey);
+    setPage(!page)
   }
   
+  const [page, setPage] = useState(true);
 
 
  function IntroPage() {
@@ -70,8 +74,8 @@ function App() {
 
   return (
     <div>
-    <IntroPage />
-    <Wallet />
+    {page && <IntroPage />}
+    {!page && <Wallet pk={privateKey} />}
     </div>
   );
 }
