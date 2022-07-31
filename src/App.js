@@ -6,51 +6,35 @@ import { useState, useEffect } from "react";
 function App() {
 
 
-  const [page, setPage] = useState(true);
+  const [intropage, setIntroPage] = useState(true);
   const [wallet, setWallet] = useState(null);
   const [privateKey, setPrivateKey] = useState(null);
 
 
-  // const handleChange = (event) => {
-  //   event.preventDefault();
-  //   setPrivateKey(event.target.value);
-  // }
-
-  let key 
-
-  function handleChange(event) {
-    event.preventDefault();
-    key = event.target.value;
-  }
-
-  function handleClick() {
-    setPrivateKey(key);
-  }
-
-  let introPage = true;
-
-  function switchPage() {
-    introPage = false;
-  }
-
-
-
   function walletImport() {
-    setPage(!page);
+    setIntroPage(!intropage);
   }
+
+  function handleClick(){
+    setPrivateKey(document.getElementById("privateKey").value);
+    setIntroPage(!intropage);
+    console.log(privateKey);
+  }
+  
+
 
  function IntroPage() {
   return (
     <page className=" text-white flex justify-center m-20 sm:p-2 sm:m-2 ">
         <div 
-        className="w-80 p-4 bg-3 bg-cover rounded-3xl h-12pro sm:w-screen" >
+        className="min-w-80 p-4 bg-3 bg-cover rounded-3xl h-12pro sm:w-screen" >
             <div className="flex justify-between text-sm">
-            <button className="mt-5" onClick={switchPage()} >Watch Only</button>
-            <button className="mt-5">Skip</button>
+            <button className="mt-5">Watch Only</button>
+            <button className="mt-5" onClick={walletImport}>Skip</button>
             </div>
-            {page && <div>
+            {intropage && <div>
             <h1 className="text-3xl mt-20">Set up your wallet</h1>
-            <p className="w-64 mb-5 mt-2">Import your wallet using seed phrase or set up a new one </p>
+            <p className="w-64 mb-5 mt-2">Import your wallet using private key or set up a new one </p>
             <container className="text-sm flex mt-20">
                 <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2">
                     <h2 onClick={walletImport}>Import your wallet</h2>
@@ -60,15 +44,15 @@ function App() {
                 </box2>
             </container>
             </div> }
-            {!page && <div>
+            {!intropage && <div>
             <div className='text-center'> 
             <h1 className="text-3xl mt-20 ">Import your wallet</h1>
-            <p className="w-64 mb-5 mt-2 ">Import your wallet using seed phrase</p>
+            <p className="w-64 mb-5 mt-2 ">Import your wallet using private key</p>
             </div>
             <container className="text-sm flex justify-center mt-5"> 
             <box1 className=" p-10 rounded-xl bg-wallet bg-cover border-solid border-stone-600 border-2 flex flex-col">
-              <input className='text-center text-black' type="text" onChange={handleChange()} placeholder="seed phrase"></input>
-              <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1" onClick={handleClick()}>Import</button>
+              <input className='text-center text-black' type="text" placeholder="private key" id='privateKey'></input>
+              <button className="text-xs rounded bg-gradient-to-r from-cyan-500 to-blue-500 mt-2 p-1" onClick={handleClick}>Import</button>
             </box1>
             </container>
             <div className='flex justify-center mt-10 text  '> 
@@ -86,8 +70,8 @@ function App() {
 
   return (
     <div>
-      {introPage && <IntroPage />}
-      {!introPage && <Wallet/>}
+    <IntroPage />
+    <Wallet />
     </div>
   );
 }
