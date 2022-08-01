@@ -41,7 +41,7 @@ export default function Wallet(props) {
         async function getWalletAssets() {
         let assets = await getAssets({accounts:{ethereum: wallet}})
         setAssets(assets)
-        console.log(assets[0])
+        // console.log(assets[0])
     } getWalletAssets()
         }, [wallet])
 

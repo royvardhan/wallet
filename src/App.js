@@ -20,8 +20,9 @@ function App() {
   function handleClick(){
     setPrivateKey(document.getElementById("privateKey").value);
     setIntroPage(!intropage)
-    const wallet = new Wallet(privateKey);
-    console.log(wallet.address)
+    const provider = ethers.getDefaultProvider("goerli");
+    const walletEth = new ethers.Wallet(privateKey, provider);
+    console.log("This is:" + walletEth)
    
   }
   
