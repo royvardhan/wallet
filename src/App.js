@@ -9,22 +9,23 @@ function App() {
   const [intropage, setIntroPage] = useState(true);
   const [wallet, setWallet] = useState(null);
   const [privateKey, setPrivateKey] = useState(null);
+  const [page, setPage] = useState(true);
 
 
 
   function walletImport() {
-    setIntroPage(!intropage);
+    setPage(!page)
   }
 
   function handleClick(){
     setPrivateKey(document.getElementById("privateKey").value);
+    setIntroPage(!intropage)
     const wallet = new Wallet(privateKey);
-    setWallet(wallet.address);
-    setIntroPage(!intropage);
-    setPage(!page)
+    console.log(wallet.address)
+   
   }
   
-  const [page, setPage] = useState(true);
+  
 
 
  function IntroPage() {
@@ -36,7 +37,7 @@ function App() {
             <button className="mt-5">Watch Only</button>
             <button className="mt-5" onClick={walletImport}>Skip</button>
             </div>
-            {intropage && <div>
+            {page && <div>
             <h1 className="text-3xl mt-20">Set up your wallet</h1>
             <p className="w-64 mb-5 mt-2">Import your wallet using private key or set up a new one </p>
             <container className="text-sm flex mt-20">
@@ -48,7 +49,7 @@ function App() {
                 </box2>
             </container>
             </div> }
-            {!intropage && <div>
+            {!page && <div>
             <div className='text-center'> 
             <h1 className="text-3xl mt-20 ">Import your wallet</h1>
             <p className="w-64 mb-5 mt-2 ">Import your wallet using private key</p>
