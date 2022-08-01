@@ -8,7 +8,7 @@ function App() {
 
   const [intropage, setIntroPage] = useState(true);
   const [wallet, setWallet] = useState(null);
-  const [privateKey, setPrivateKey] = useState(null);
+  // const [privateKey, setPrivateKey] = useState(null);
   const [page, setPage] = useState(true);
 
 
@@ -18,11 +18,12 @@ function App() {
   }
 
   function handleClick(){
-    setPrivateKey(document.getElementById("privateKey").value);
-    setIntroPage(!intropage)
+    let privateKey  = document.getElementById("privateKey").value
+    // setPrivateKey(value);
     const provider = ethers.getDefaultProvider("goerli");
     const walletEth = new ethers.Wallet(privateKey, provider);
-    console.log("This is:" + walletEth)
+    setWallet(walletEth.address);
+    setIntroPage(!intropage)
    
   }
   
@@ -77,7 +78,7 @@ function App() {
   return (
     <div>
     {intropage && <IntroPage />}
-    {!intropage && <Wallet pk={privateKey} />}
+    {!intropage && <Wallet walletAddress={wallet} />}
     </div>
   );
 }

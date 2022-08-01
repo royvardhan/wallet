@@ -7,10 +7,10 @@ import { getAssets } from '@depay/web3-assets'
 
 
 export default function Wallet(props) {
-    
 
-    const [privateKey, setPrivateKey] = useState();
-    const [walletAddress, setWallet] = useState();
+
+    // const [privateKey, setPrivateKey] = useState();
+    const [walletAddress, setWallet] = useState(props.walletAddress);
     const [balance, setBalance] = useState(0);
     const [walletAssets, setAssets] = useState([]);
 
