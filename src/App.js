@@ -74,8 +74,8 @@ function App() {
 
   return (
     <div>
-    {page && <IntroPage />}
-    {!page && <Wallet pk={privateKey} />}
+    {intropage && <IntroPage />}
+    {!intropage && <Wallet pk={privateKey} />}
     </div>
   );
 }

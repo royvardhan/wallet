@@ -9,14 +9,14 @@ import { getAssets } from '@depay/web3-assets'
 export default function Wallet(props) {
     
 
-    const [privateKey, setPrivateKey] = useState(props.pk);
-    const [walletAddress, setWallet] = useState(props.wallet);
+    const [privateKey, setPrivateKey] = useState();
+    const [walletAddress, setWallet] = useState();
     const [balance, setBalance] = useState(0);
     const [walletAssets, setAssets] = useState([]);
 
 
 
-    const wallet = walletAddress? walletAddress : "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
+    const wallet = walletAddress ? walletAddress : "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
     const shortWallet = wallet.substring(0, 6) + "..." + wallet.substring(wallet.length - 4, wallet.length);
     const etherscanApiKey = "FRSY1R3HCHWGUICNM54XYZ3Q8PK1PITJAR"
    
